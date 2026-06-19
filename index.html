@@ -5,22 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>AURUM ESTATES GROUP — Luxury Real Estate | Islamabad & Peshawar</title>
 <meta name="description" content="Pakistan's premier luxury real estate group. Exclusive villas, apartments, plots and commercial properties. CEO: Hamza Salarzai."/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
-function toggleVid(card){
-  const vid=card.querySelector('video');
-  const allCards=document.querySelectorAll('.vt-card');
-  if(vid.paused){
-    // pause all others
-    allCards.forEach(c=>{const v=c.querySelector('video');if(v&&!v.paused){v.pause();c.classList.remove('playing');}});
-    vid.play().catch(()=>{});
-    card.classList.add('playing');
-  } else {
-    vid.pause();
-    card.classList.remove('playing');
-  }
-}
-
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Barlow+Condensed:wght@200;300;400;500;700&display=swap"/>
@@ -461,25 +446,18 @@ footer{padding:64px 52px 36px;background:var(--blk);border-top:1px solid var(--b
 @media(max-width:640px){.cat-grid{grid-template-columns:repeat(2,1fr)}.rv-grid{grid-template-columns:1fr}.pm{grid-template-columns:1fr}.stats-inner{grid-template-columns:1fr 1fr}.cta-form{flex-direction:column}.ceo-body{padding:40px 28px}}
 
 /* HERO VIDEO */
-.h-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.8;pointer-events:none}
+/* HERO YOUTUBE BG */
+.h-ytbg{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.h-ytbg iframe{position:absolute;top:50%;left:50%;width:177.78vh;height:100%;min-width:100%;min-height:56.25vw;transform:translate(-50%,-50%);opacity:.55;pointer-events:none;border:none}
 .h-slides{z-index:-1!important}
 
 /* VIDEO TOURS SECTION */
 #vtours{padding:80px 52px;background:var(--dark)}
 .vt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:36px}
-.vt-card{position:relative;overflow:hidden;aspect-ratio:16/9;cursor:none;background:var(--mid)}
-.vt-vid{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.62);transition:filter .4s}
-.vt-card.playing .vt-vid{filter:brightness(.85)}
-.vt-ovl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;background:rgba(6,5,4,.45);transition:background .4s}
-.vt-card.playing .vt-ovl{background:rgba(6,5,4,0);opacity:0}
-.vt-card.playing:hover .vt-ovl{opacity:1;background:rgba(6,5,4,.25)}
-.vt-icon{width:70px;height:70px;border-radius:50%;background:rgba(6,5,4,.72);border:2px solid var(--gld);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);transition:background .3s,transform .3s}
-.vt-card:hover .vt-icon{background:var(--gld);transform:scale(1.1)}
-.vt-icon svg{width:24px;height:24px;fill:var(--wht);margin-left:4px;transition:fill .3s}
-.vt-card:hover .vt-icon svg,.vt-card.playing .vt-icon svg{fill:var(--blk)}
-.vt-card.playing .vt-icon{background:var(--gld)}
-.vt-info{position:absolute;bottom:0;left:0;right:0;padding:20px 18px;background:linear-gradient(to top,rgba(6,5,4,.92) 0%,transparent 100%);z-index:3}
-.vt-ttl{font-family:"Bebas Neue",sans-serif;font-size:19px;letter-spacing:2px;color:var(--wht)}
+.vt-card{position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--mid)}
+.vt-yt{width:100%;height:100%;border:none;display:block}
+.vt-info{position:absolute;bottom:0;left:0;right:0;padding:16px 18px;background:linear-gradient(to top,rgba(6,5,4,.9) 0%,transparent 100%);pointer-events:none}
+.vt-ttl{font-family:"Bebas Neue",sans-serif;font-size:18px;letter-spacing:2px;color:var(--wht)}
 .vt-sub{font-family:"Space Mono",monospace;font-size:7.5px;letter-spacing:3px;color:var(--gld);margin-top:3px}
 @media(max-width:900px){.vt-grid{grid-template-columns:1fr}#vtours{padding:52px 20px}}
 @media(max-width:640px){.vt-grid{grid-template-columns:1fr}}
@@ -560,10 +538,9 @@ footer{padding:64px 52px 36px;background:var(--blk);border-top:1px solid var(--b
 
 <!-- HERO -->
 <section id="hero">
-<video class="h-video" autoplay muted loop playsinline>
-  <source src="https://videos.pexels.com/video-files/2253719/2253719-hd_1920_1080_30fps.mp4" type="video/mp4"/>
-  <source src="https://videos.pexels.com/video-files/2253719/2253719-hd_1280_720_30fps.mp4" type="video/mp4"/>
-</video>
+<div class="h-ytbg">
+  <iframe src="https://www.youtube.com/embed/wsQBs_QRexA?autoplay=1&mute=1&loop=1&controls=0&playlist=wsQBs_QRexA&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&playsinline=1" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+</div>
   <div class="h-slides">
     <div class="hs" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&h=1080&q=80&auto=format&fit=crop')"></div>
     <div class="hs" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&h=1080&q=80&auto=format&fit=crop')"></div>
@@ -655,40 +632,25 @@ footer{padding:64px 52px 36px;background:var(--blk);border-top:1px solid var(--b
   <p class="sec-lbl">Watch Before You Visit</p>
   <h2 class="sec-ttl">Property Video Tours</h2>
   <div class="vt-grid">
-    <div class="vt-card" onclick="toggleVid(this)">
-      <video class="vt-vid" loop muted playsinline preload="metadata">
-        <source src="https://videos.pexels.com/video-files/2253719/2253719-hd_1280_720_30fps.mp4" type="video/mp4"/>
-      </video>
-      <div class="vt-ovl">
-        <div class="vt-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-      </div>
+    <div class="vt-card">
+      <iframe class="vt-yt" src="https://www.youtube.com/embed/wsQBs_QRexA?rel=0&modestbranding=1&color=white" title="Luxury House Cinematic Tour" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
       <div class="vt-info">
-        <div class="vt-ttl">Aerial Luxury Showcase</div>
-        <div class="vt-sub">Grand Kanal Mansion · Drone Footage</div>
+        <div class="vt-ttl">Luxury House Cinematic Tour</div>
+        <div class="vt-sub">4K Property Walkthrough · Grand Villa</div>
       </div>
     </div>
-    <div class="vt-card" onclick="toggleVid(this)">
-      <video class="vt-vid" loop muted playsinline preload="metadata">
-        <source src="https://videos.pexels.com/video-files/3770104/3770104-hd_1280_720_25fps.mp4" type="video/mp4"/>
-      </video>
-      <div class="vt-ovl">
-        <div class="vt-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-      </div>
+    <div class="vt-card">
+      <iframe class="vt-yt" src="https://www.youtube.com/embed/WJyOx--7boU?rel=0&modestbranding=1&color=white" title="Award-Winning Villa Tour" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
       <div class="vt-info">
-        <div class="vt-ttl">Premium Residence Tour</div>
-        <div class="vt-sub">Riverside Grand Villa · Islamabad</div>
+        <div class="vt-ttl">Award-Winning Villa Tour</div>
+        <div class="vt-sub">Interior Showcase · Premium Residence</div>
       </div>
     </div>
-    <div class="vt-card" onclick="toggleVid(this)">
-      <video class="vt-vid" loop muted playsinline preload="metadata">
-        <source src="https://videos.pexels.com/video-files/2113326/2113326-hd_1280_720_30fps.mp4" type="video/mp4"/>
-      </video>
-      <div class="vt-ovl">
-        <div class="vt-icon"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-      </div>
+    <div class="vt-card">
+      <iframe class="vt-yt" src="https://www.youtube.com/embed/zumJJUL_ruM?rel=0&modestbranding=1&color=white" title="Beautiful Interior Details" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
       <div class="vt-info">
-        <div class="vt-ttl">Neighbourhood Overview</div>
-        <div class="vt-sub">Hayatabad Phase 6 · Peshawar</div>
+        <div class="vt-ttl">Beautiful Interior Details</div>
+        <div class="vt-sub">Luxury Home · Architecture &amp; Design</div>
       </div>
     </div>
   </div>
@@ -903,8 +865,8 @@ const PROPS=[
   {id:10,nm:"Saddar Commercial Plaza",area:"Saddar, Peshawar",price:120000000,status:"sale",beds:0,baths:6,size:"8,000 sqft",parking:10,type:"Plaza",cat:"commercial",bdg:"LANDMARK",bcls:"bm",img:"1486325212027-8081e485255e",desc:"A fully rented commercial landmark in the heart of Saddar, Peshawar. G+3 with 12 commercial units, all leased to established businesses. Generating PKR 90 Lakh annual rental income. An exceptional investment property."},
   {id:11,nm:"Margalla View Plot",area:"E-7, Islamabad",price:18000000,status:"sale",beds:0,baths:0,size:"1 Kanal",parking:0,type:"Residential Plot",cat:"plot",bdg:"MARGALLA",bcls:"bm",img:"1505691723518-36a5ac3be353",desc:"A rare residential plot in exclusive E-7 with direct, unobstructed Margalla Hills views. Elevated site with natural breeze and stunning sunset orientation. Minutes from key Islamabad landmarks."},
   {id:12,nm:"Executive Penthouse F-10",area:"F-10 Markaz, Islamabad",price:900000,status:"rent",beds:3,baths:2,size:"1,800 sqft",parking:2,type:"Penthouse",cat:"penthouse",bdg:"FOR RENT",bcls:"br",img:"1493809842364-78817add7ffb",desc:"A high-floor executive apartment with panoramic Islamabad views, fully furnished with designer furniture and smart home controls. Dedicated maid's room, gym access, rooftop access and two covered parking bays."},
-  {id:13,nm:"Summit Residence",area:"Warsak Road, Peshawar",price:28000000,status:"sale",beds:4,baths:3,size:"8 Marla",parking:2,type:"Villa",cat:"villa",bdg:"PREMIUM",bcls:"bp",img:"1582407947304-fd86f28320c7",desc:"A refined modern villa with a European-inspired façade and a rooftop terrace offering sweeping Peshawar city views. Designer interiors with custom joinery, imported fittings and a beautiful landscaped garden."},
-  {id:14,nm:"Tech Hub Office",area:"I-9 Industrial, Islamabad",price:15000000,status:"sale",beds:0,baths:3,size:"3,000 sqft",parking:5,type:"Office",cat:"commercial",bdg:"CORNER",bcls:"bn",img:"1504384308090-c5d1a1571a49",desc:"A purpose-built, tech-ready commercial space in Islamabad's I-9 zone. Open-plan with high-speed fibre, modular workstations, a server room, a glass boardroom and 5 dedicated covered parking spaces. Ideal for IT companies."},
+  {id:13,nm:"Summit Residence",area:"Warsak Road, Peshawar",price:28000000,status:"sale",beds:4,baths:3,size:"8 Marla",parking:2,type:"Villa",cat:"villa",bdg:"PREMIUM",bcls:"bp",img:"1600607687939-ce8a6c25118c",desc:"A refined modern villa with a European-inspired façade and a rooftop terrace offering sweeping Peshawar city views. Designer interiors with custom joinery, imported fittings and a beautiful landscaped garden."},
+  {id:14,nm:"Tech Hub Office",area:"I-9 Industrial, Islamabad",price:15000000,status:"sale",beds:0,baths:3,size:"3,000 sqft",parking:5,type:"Office",cat:"commercial",bdg:"CORNER",bcls:"bn",img:"1486325212027-8081e485255e",desc:"A purpose-built, tech-ready commercial space in Islamabad's I-9 zone. Open-plan with high-speed fibre, modular workstations, a server room, a glass boardroom and 5 dedicated covered parking spaces. Ideal for IT companies."},
   {id:15,nm:"Pearl Residency",area:"Regi Model Town, Peshawar",price:19000000,status:"sale",beds:4,baths:3,size:"8 Marla",parking:2,type:"House",cat:"residential",bdg:"NEW",bcls:"bn",img:"1502005097973-6a7082348e28",desc:"A freshly constructed contemporary residence in the fast-growing Regi Model Town. Premium fixtures, solar panels, CCTV and walking distance from shopping centres, schools and hospitals."},
   {id:16,nm:"Grand Kanal Mansion",area:"DHA Phase 2, Islamabad",price:150000000,status:"sale",beds:7,baths:6,size:"2 Kanal",parking:6,type:"Mansion",cat:"residential",bdg:"ULTRA LUX",bcls:"bu",img:"1416331108676-a22ccb276e35",desc:"The crown jewel of our portfolio. An ultra-luxury 2-Kanal mansion in DHA Islamabad's most exclusive address. Indoor heated pool, private cinema, passenger elevator, 4-car underground garage, full smart home system and backup generator. Unrivalled in every regard."}
 ];
